@@ -1,0 +1,34 @@
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    int N;
+    scanf("%d", &N);
+
+    while (N--) {
+        int T;
+        scanf("%d", &T);
+
+        int tiros[T];
+        for (int i = 0; i < T; i++) {
+            scanf("%d", &tiros[i]);
+        }
+
+        char pulos[T + 1];
+        scanf("%s", pulos);
+
+        int atingido = 0;
+
+        for (int i = 0; i < T; i++) {
+            if (pulos[i] == 'S' && tiros[i] <= 2) {
+                atingido++;
+            } else if (pulos[i] == 'J' && tiros[i] > 2) {
+                atingido++;
+            }
+        }
+
+        printf("%d\n", atingido);
+    }
+
+    return 0;
+}
