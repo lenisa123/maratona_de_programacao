@@ -1,0 +1,68 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <stack>
+#include <queue>
+
+int main() {
+    int n;
+
+    while (scanf("%d", &n) != EOF) {
+        std::stack<int> pilha;
+        std::queue<int> fila;
+        std::priority_queue<int> fila_prioridade;
+
+        int eh_pilha = 1, eh_fila = 1, eh_fila_prioridade = 1;
+
+        for (int i = 0; i < n; i++) {
+            int comando, x;
+            scanf("%d", &comando);
+
+            if (comando == 1) {
+                scanf("%d", &x);
+                pilha.push(x);
+                fila.push(x);
+                fila_prioridade.push(x);
+            } else if (comando == 2) {
+                scanf("%d", &x);
+
+                if (eh_pilha) {
+                    if (pilha.empty() || pilha.top() != x) {
+                        eh_pilha = 0;
+                    } else {
+                        pilha.pop();
+                    }
+                }
+
+                if (eh_fila) {
+                    if (fila.empty() || fila.front() != x) {
+                        eh_fila = 0;
+                    } else {
+                        fila.pop();
+                    }
+                }
+
+                if (eh_fila_prioridade) {
+                    if (fila_prioridade.empty() || fila_prioridade.top() != x) {
+                        eh_fila_prioridade = 0;
+                    } else {
+                        fila_prioridade.pop();
+                    }
+                }
+            }
+        }
+
+        if (eh_pilha + eh_fila + eh_fila_prioridade > 1) {
+            printf("not sure\n");
+        } else if (eh_pilha) {
+            printf("stack\n");
+        } else if (eh_fila) {
+            printf("queue\n");
+        } else if (eh_fila_prioridade) {
+            printf("priority queue\n");
+        } else {
+            printf("impossible\n");
+        }
+    }
+
+    return 0;
+}
