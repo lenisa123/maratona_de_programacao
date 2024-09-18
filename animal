@@ -1,0 +1,42 @@
+#include <stdio.h>
+ 
+int main() {
+ 
+    char catum[15], catdois[15], cattres[15];
+    scanf("%s", catum);
+    scanf("%s", catdois);
+    scanf("%s", cattres);
+    
+    if (strcmp(catum, "vertebrado") == 0) {
+        if (strcmp(catdois, "ave") == 0) {
+            if (strcmp(cattres, "carnivoro") == 0) {
+                printf("aguia\n");
+            }else{
+                printf("pomba\n");
+            }
+        }else if(strcmp(catdois, "mamifero")==0){
+            if(strcmp(cattres, "onivoro")==0){
+              printf("homem\n");
+            }else{
+              printf("vaca\n");
+            }  
+        }
+    }else if(strcmp(catum, "invertebrado")==0){
+        if(strcmp(catdois, "inseto")==0){
+            if (strcmp(cattres, "hematofago")==0){
+                printf("pulga\n");
+            }else{
+                printf("lagarta\n");
+            }
+        }else if (strcmp(catdois, "anelideo")==0){
+            if(strcmp(cattres, "hematofago")==0){
+                printf("sanguessuga\n");
+            }else{
+                printf("minhoca\n");
+            }
+        }
+    }
+    
+ 
+    return 0;
+}
